@@ -6,10 +6,12 @@
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  max-width: 800px;
-
-  background: rgba(0, 0, 0, 0.7);
+  max-width: 800px; 
+  background: rgba(0, 0, 0, 0.658);
   border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   padding: 1rem;
 }
 
@@ -36,12 +38,39 @@
   margin: 0;
   color: white;
   font-size: 1rem;
+  margin-left: 45px;
+}
+
+.menu figure:hover{
+  transform: translateY(6px);
+  transition: 0.5s;
 }
 
 .menu img {
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 70px;
+  cursor: pointer;
   margin-bottom: 0.5rem;
 }
 
+.menu figcaption{
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
 
+.missoes_part{
+  color: rgb(187, 255, 187);
+}
+
+.inventario_part{
+  color: rgb(201, 192, 255);
+}
+
+.geolocation_part{
+  color: rgb(194, 194, 194);
+}
+
+.camera_part{
+  color: rgb(255, 198, 207);
+}

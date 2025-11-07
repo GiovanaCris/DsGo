@@ -1,7 +1,7 @@
-import missao from '../assets/missao_tratado.png';
-import mapa from '../assets/mapa_tratado.png';
-import bau from '../assets/bau_tratado.png';
-import camera from '../assets/camera_tratado.png';
+import mutano from '../assets/mutano_img.png';
+import ravena from '../assets/ravena_img.png';
+import robin from '../assets/robin_img.webp';
+import estelar from '../assets/estelar_img.png';
 import { Link } from 'react-router-dom'
 export function Menu() {
     return (
@@ -10,34 +10,35 @@ export function Menu() {
                 <Link to = 'missao'>
                 <li>
                     <figure>
-                        <img src={missao} alt="Missões" />
-                        <figcaption>Missões</figcaption>
+                        <img src={mutano} alt="Imagem do personagem mutano" />
+                        <figcaption className='missoes_part'>Missões</figcaption>
                     </figure>
                 </li>
                 </Link>
                 
                 <li>
                     <figure>
-                        <img src={bau} alt="Inventário" />
-                        <figcaption>Inventário</figcaption>
+                        <img src={ravena} alt="Imagem da personagem Ravena" />
+                        <figcaption className='inventario_part'>Inventário</figcaption>
                     </figure>
                     
                 </li>
                 <li>
                     <figure>
-                        <img src={mapa} alt="GeoLocalização" />
-                        <figcaption>GeoLocalização</figcaption>
+                        <img src={robin} alt="Imagem do personagem Robin" />
+                        <figcaption className='geolocation_part'>GeoLocalização</figcaption>
                     </figure>
                 </li>
                  <li>
                     
                     <figure>
-                        <img src={camera} alt="camera" />
-                        <figcaption>Camera</figcaption>
+                        <img src={estelar} alt="Imagem da pesonagem Estelar" />
+                        <figcaption className='camera_part'>Camera</figcaption>
                     </figure>
                     
                 </li>
             </ul>
+            
         </div>
     )
 }

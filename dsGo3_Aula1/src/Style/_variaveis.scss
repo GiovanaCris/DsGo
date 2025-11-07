@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 $fundo: #04010f;
 $claro: #f0ebeb;
-$card:#dcdff2;
+$card:#dcedf2;
 $sombrasBox: 0 4px 10px rgba(0, 0, 0, 0.3);
-$destaque-rosa: #ff3d7f transparent;
+$destaque-azul: #43b4ff transparent;
 $gradiente-rosa: linear-gradient(135deg, #2f1048, #e4018d);
 $foco: #4c0f32;
 $botao-azul: linear-gradient(135deg, #2c76e5, #0d327c);
@@ -30,7 +32,7 @@ body {
 button {
   margin-top: 1rem;
   align-self: center;
-  background: $gradiente-rosa;
+  background: $botao-azul;
   color: $claro;
   border: none;
   padding: 0.7rem 1.4rem;
@@ -42,13 +44,13 @@ button {
 }
 
 button:hover {
-  background: $gradiente-rosa;
+  background: $botao-azul;
   transform: scale(1.05);
   gap: 30px;
 }
 
 button:focus {
-  outline: 3px solid #4c0f32;
+  outline: 1px solid #180f4c;
   outline-offset: 3px;
 }
 

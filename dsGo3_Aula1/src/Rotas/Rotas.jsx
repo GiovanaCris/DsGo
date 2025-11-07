@@ -2,7 +2,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Inicial } from "../Paginas/Inicial";
 import { DSGo } from "../Paginas/DSGo";
-import { Missao} from "../Paginas/Missao";
+import { Missao} from "../Paginas/MissaoCard";
 // import { Inventario } from "../Pagina/Inventario";
 // import { GeolocalizacaoMapa } from "../Componentes/GeolocalizacaoMapa";
 

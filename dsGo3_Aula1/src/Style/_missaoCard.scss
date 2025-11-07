@@ -1,27 +1,24 @@
 @use './variaveis' as *;
 
-/* CONTAINER PRINCIPAL */
 .conteiner {
-  background-color: rgba(0, 0, 0, 0.6);
+  // background-color: rgba(0, 0, 0, 0.6);
+  background-image: url('../assets/img_backgoundModal.jpg');
   backdrop-filter: blur(8px);
   padding: 3rem 2rem;
   border-radius: 20px;
-  color: #dfcaf9;
+  color: #b3f5ff;
   max-width: 1200px;
   margin: 2rem auto 7rem auto;
   overflow-y: auto;
   max-height: 80vh;
-  /* scroll controlado */
-
-  /* scroll estilizado */
   scrollbar-width: thin;
-  scrollbar-color:$destaque-rosa;
+  scrollbar-color: $destaque-azul;
   &::-webkit-scrollbar {
     width: 8px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $destaque-rosa;
+    background-color: blue;
     border-radius: 10px;
   }
 
@@ -30,22 +27,19 @@
   }
 }
 
-/* TÍTULO */
 .conteiner h2 {
   text-align: center;
   margin-bottom: 1rem;
   font-size: 2rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
-/* GRID DE MISSÕES */
 .missoes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
-/* CARD */
 .missao-card {
   background-color:$card;
   color: #222;
@@ -67,7 +61,6 @@
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
 }
 
-/* TEXTO */
 .missao-card h3 {
   font-size: 1.3rem;
 }
@@ -81,4 +74,21 @@
   font-size: 1rem;
   margin-bottom: 0.5rem;
   color: #6a1b9a;
+}
+
+.fechar-missoes {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  color: $destaque-azul; 
+  cursor: pointer;
+  transition: color 0.2s ease;
+  z-index: 1001;
+  &:hover {
+    color: #ff4d4d;
+  }
 }
