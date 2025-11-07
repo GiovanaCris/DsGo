@@ -6,71 +6,117 @@
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  max-width: 800px; 
-  background: rgba(0, 0, 0, 0.658);
+  max-width: 800px;
+  background: rgba(0, 0, 0, 0.65);
   border-radius: 1rem;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  padding: 1rem;
+  z-index: 20;
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    list-style: none;
+    width: 100%;
+  }
+
+  li {
+    flex: 1 1 100px;
+    text-align: center;
+  }
+
+  figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    color: white;
+    font-size: 1rem;
+    transition: 0.4s ease;
+  }
+
+  figure:hover {
+    transform: translateY(6px);
+  }
+
+  img {
+    width: 55px;
+    height: 70px;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  figcaption {
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
 }
 
-.menu ul {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap; 
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.menu li {
-  flex: 1 1 100px; 
-  text-align: center;
-}
-
-.menu figure {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0;
-  color: white;
-  font-size: 1rem;
-  margin-left: 45px;
-}
-
-.menu figure:hover{
-  transform: translateY(6px);
-  transition: 0.5s;
-}
-
-.menu img {
-  width: 55px;
-  height: 70px;
-  cursor: pointer;
-  margin-bottom: 0.5rem;
-}
-
-.menu figcaption{
-  cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-}
-
-.missoes_part{
+.missoes_part {
   color: rgb(187, 255, 187);
 }
 
-.inventario_part{
+.inventario_part {
   color: rgb(201, 192, 255);
 }
 
-.geolocation_part{
+.geolocation_part {
   color: rgb(194, 194, 194);
 }
 
-.camera_part{
+.camera_part {
   color: rgb(255, 198, 207);
+}
+
+/* ✅ Tablet */
+@media (max-width: 768px) {
+  .menu {
+    bottom: 15px;
+    padding: 0.8rem;
+
+    ul {
+      gap: 1rem;
+    }
+
+    img {
+      width: 50px;
+      height: 65px;
+    }
+
+    figcaption {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+/* ✅ Mobile */
+@media (max-width: 480px) {
+  .menu {
+    width: 95%;
+    padding: 0.7rem;
+
+    ul {
+      gap: 0.8rem;
+    }
+
+    li {
+      flex: 1 1 70px;
+    }
+
+    img {
+      width: 45px;
+      height: 60px;
+    }
+
+    figcaption {
+      font-size: 0.8rem;
+    }
+  }
 }

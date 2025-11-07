@@ -6,20 +6,24 @@ dialog.modal {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
+  max-width: 650px;
   max-height: 80%;
   background: $claro;
   border-radius: 16px;
   padding: 2rem;
   text-align: center;
   border: 2px solid $destaque-azul;
-  box-shadow: 0 0 12px rgba(163, 7, 132, 0.7),
-              0 8px 24px rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0 0 12px rgba(7, 49, 163, 0.7),
+    0 8px 24px rgba(0, 0, 0, 0.4);
   z-index: 1000;
+  overflow-y: auto;
 
   .titulo {
     margin-bottom: 2rem;
-    color: $destaque-azul;
+    color: rgb(10, 30, 81);
     font-size: 1.6rem;
+    font-weight: 700;
   }
 
   p {
@@ -31,6 +35,7 @@ dialog.modal {
 
   .caixaTexto {
     width: 80%;
+    max-width: 400px;
     padding: 0.6rem;
     margin-bottom: 1rem;
     border-radius: 6px;
@@ -38,39 +43,146 @@ dialog.modal {
     font-size: 1.2rem;
     background: $claro;
     color: $fundo;
+
+    &.erro {
+      border-color: red;
+    }
   }
 
   .modal-botoes {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-top: 1rem;
+
+    button {
+      padding: 0.6rem 1.5rem;
+      border-radius: 8px;
+      border: none;
+      background: $destaque-azul;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background: lighten $destaque-azul;
+      }
+
+      &:focus {
+        outline: 3px solid lighten $destaque-azul;
+        outline-offset: 3px;
+      }
+    }
   }
 
   .resultado {
     margin-top: 1.5rem;
+
+    p {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
   }
 
   img {
     margin-top: 1rem;
     width: 100px;
+    height: auto;
   }
 
   .fechar-modal {
     position: absolute;
-    top: 10px;
+    top: -7px;
     right: 10px;
     background: transparent;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: bold;
     color: #333;
     cursor: pointer;
-    transition: color 0.2s ease;
-    z-index: 10;
+    transition: 0.2s ease;
 
     &:hover {
-      color: #ff4d4d;
+      color: #5b83b2;
+    }
+
+    &:focus {
+      outline: 3px solid #5b83b2;
+      outline-offset: 3px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  dialog.modal {
+    width: 65%;
+    padding: 1.8rem;
+
+    .titulo {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  dialog.modal {
+    width: 85%;
+    padding: 1.5rem;
+    max-height: 85%;
+
+    .titulo {
+      font-size: 1.4rem;
+    }
+
+    .caixaTexto {
+      width: 90%;
+      font-size: 1.1rem;
+    }
+
+    img {
+      width: 90px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  dialog.modal {
+    width: 95%;
+    padding: 1.2rem;
+    max-height: 90%;
+
+    .titulo {
+      font-size: 1.2rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+    }
+
+    .caixaTexto {
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    .modal-botoes {
+      flex-direction: column;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    img {
+      width: 80px;
+    }
+
+    .fechar-modal {
+      font-size: 1.4rem;
+      top: -5px;
+      right: 8px;
     }
   }
 }

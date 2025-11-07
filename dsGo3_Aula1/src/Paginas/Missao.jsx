@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { missoes } from '../Dados/dadosMissao';
-import { MissaoCard } from '../Componentes/MissaoCard';
-import { MissaoModal } from '../Componentes/MissaoModal';
+import { useNavigate } from "react-router-dom";
+import { missoes } from "../Dados/dadosMissao";
+import { MissaoCard } from "../Componentes/MissaoCard";
+import { MissaoModal } from "../Componentes/MissaoModal";
 
-export function Missao({ onFechar }) {
+export function Missao() {
+  const navigate = useNavigate();
   const [missaoSelecionada, setMissaoSelecionada] = useState(null);
   const [missoesConcluidas, setMissoesConcluidas] = useState([]);
 
@@ -13,26 +15,34 @@ export function Missao({ onFechar }) {
   };
 
   return (
-    <section className="conteiner">
+    <main
+      className="conteiner"
+      role="main"
+      aria-labelledby="titulo-missoes"
+    >
       <button
         className="fechar-missoes"
-        onClick={onFechar || (() => console.log('Fechar clicado'))}
-        aria-label="Fechar tela de missões"
+        onClick={() => navigate(-1)}
+        aria-label="Voltar para a página anterior"
       >
         ✕
       </button>
 
-      <h2>Suas missões</h2>
-      <div className="missoes-grid">
+      <h1 id="titulo-missoes">Suas Missões</h1>
+
+      <section
+        className="missoes-grid"
+        aria-label="Lista de missões disponíveis"
+      >
         {missoes.map((m) => (
           <MissaoCard
             key={m.id}
             missao={m}
-            onIniciarMissao={setMissaoSelecionada}
+            onIniciarMissao={() => setMissaoSelecionada(m)}
             concluida={missoesConcluidas.includes(m.id)}
           />
         ))}
-      </div>
+      </section>
 
       {missaoSelecionada && (
         <MissaoModal
@@ -41,6 +51,6 @@ export function Missao({ onFechar }) {
           onConcluir={() => concluirMissao(missaoSelecionada.id)}
         />
       )}
-    </section>
+    </main>
   );
 }

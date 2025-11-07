@@ -1,18 +1,27 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export function Inicial() {
   const navigate = useNavigate();
 
   return (
-    <main className="inicial">
-      <div className='text_inicial'>
-        <h2>GET STARTED</h2>
-      </div>
-      <div className="btn-box">
-        <button onClick={() => navigate('/dsgo')} className="btn">
-          ENTRAR
+    <main
+      className="inicial"
+      role="main"
+      aria-labelledby="titulo-inicial"
+    >
+      <section className="text_inicial">
+        <h1 id="titulo-inicial">Get Started</h1>
+      </section>
+
+      <section className="btn-box">
+        <button
+          className="btn"
+          onClick={() => navigate("/dsgo")}
+          aria-label="Entrar no sistema"
+        >
+          Entrar
         </button>
-      </div>
+      </section>
     </main>
   );
 }

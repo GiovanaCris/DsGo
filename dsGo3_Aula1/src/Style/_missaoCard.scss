@@ -1,7 +1,8 @@
 @use './variaveis' as *;
 
+/* ---------------- CONTAINER ---------------- */
+
 .conteiner {
-  // background-color: rgba(0, 0, 0, 0.6);
   background-image: url('../assets/img_backgoundModal.jpg');
   backdrop-filter: blur(8px);
   padding: 3rem 2rem;
@@ -12,27 +13,31 @@
   overflow-y: auto;
   max-height: 80vh;
   scrollbar-width: thin;
-  scrollbar-color: $destaque-azul;
+  scrollbar-color: $destaque-azul transparent;
+
   &::-webkit-scrollbar {
     width: 8px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: blue;
+    background-color: $destaque-azul;
     border-radius: 10px;
   }
 
   &::-webkit-scrollbar-track {
     background: transparent;
   }
+
+  h1,
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+  }
 }
 
-.conteiner h2 {
-  text-align: center;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  font-family: 'Montserrat', sans-serif;
-}
+/* ---------------- GRID ---------------- */
 
 .missoes-grid {
   display: grid;
@@ -40,55 +45,121 @@
   gap: 2rem;
 }
 
+/* ---------------- CARD ---------------- */
+
 .missao-card {
-  background-color:$card;
+  background-color: $card;
   color: #222;
   border-radius: 16px;
-  overflow: hidden;
+  padding: 1.5rem;
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  padding: 1.5rem;
-  min-height: 220px;
+  transition: 0.3s ease;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 18px;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  p {
+    line-height: 1.5;
+  }
+
+  .conteudo {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #6a1b9a;
+  }
 }
 
-.missao-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
-}
-
-.missao-card h3 {
-  font-size: 1.3rem;
-}
-
-.missao-card p {
-  line-height: 1.5;
-}
-
-.missao-card .conteudo {
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  color: #6a1b9a;
-}
+/* ---------------- BOTÃO DE FECHAR ---------------- */
 
 .fechar-missoes {
   position: absolute;
   top: 10px;
   right: 20px;
-  background: transparent;
+  background-color: #2e2e2e9e;
   border: none;
   font-size: 2rem;
   font-weight: bold;
-  color: $destaque-azul; 
+  color: $destaque-azul;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: 0.2s ease;
   z-index: 1001;
+
   &:hover {
-    color: #ff4d4d;
+    color: #4df9ff;
+  }
+
+  &:focus {
+    outline: 3px solid #4df9ff;
+    outline-offset: 3px;
+  }
+}
+
+/* ---------------- RESPONSIVIDADE ---------------- */
+
+@media (max-width: 1024px) {
+  .conteiner {
+    padding: 2rem 1.5rem;
+  }
+
+  .missao-card {
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .conteiner {
+    padding: 1.5rem 1rem;
+
+    h1,
+    h2 {
+      font-size: 1.7rem;
+    }
+  }
+
+  .missao-card {
+    font-size: 16px;
+
+    h3 {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .conteiner {
+    padding: 1rem;
+    max-height: 75vh;
+  }
+
+  .missao-card {
+    padding: 1rem;
+    min-height: 180px;
+
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  .fechar-missoes {
+    font-size: 1.6rem;
+    top: 8px;
+    right: 15px;
   }
 }

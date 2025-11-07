@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&display=swap');
+
+/* -------- VARIÁVEIS -------- */
 
 $fundo: #04010f;
 $claro: #f0ebeb;
-$card:#dcedf2;
+$card: #dcedf2;
 $sombrasBox: 0 4px 10px rgba(0, 0, 0, 0.3);
-$destaque-azul: #43b4ff transparent;
+$destaque-azul: #43b4ff;
 $gradiente-rosa: linear-gradient(135deg, #2f1048, #e4018d);
 $foco: #4c0f32;
 $botao-azul: linear-gradient(135deg, #2c76e5, #0d327c);
@@ -12,6 +14,7 @@ $botao-amarelo: linear-gradient(135deg, #b9820b, #ede203);
 $box-fundo: rgba(0, 0, 0, 0.8);
 $borda: 1px solid $fundo;
 
+/* -------- BASE -------- */
 
 * {
   margin: 0;
@@ -21,14 +24,15 @@ $borda: 1px solid $fundo;
 
 body {
   background-color: $fundo;
-  width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 16px;
-
+  overflow-x: hidden;
 }
 
-/* BOTÃO */
+/* -------- BOTÕES -------- */
+
 button {
   margin-top: 1rem;
   align-self: center;
@@ -39,25 +43,50 @@ button {
   border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
-  gap: 20px;
-}
+  transition: 0.25s ease;
+  font-size: 1rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 
-button:hover {
-  background: $botao-azul;
-  transform: scale(1.05);
-  gap: 30px;
-}
+  &:hover:not([disabled]) {
+    transform: scale(1.05);
+  }
 
-button:focus {
-  outline: 1px solid #180f4c;
-  outline-offset: 3px;
+  &:focus {
+    outline: 3px solid lighten $destaque-azul;
+    outline-offset: 3px;
+  }
 }
 
 button[disabled],
-.btn-disabled { 
+.btn-disabled {
   color: #0e0404;
   cursor: not-allowed;
-  opacity: 0.8;
+  opacity: 0.75;
   background-color: #f3f1f2;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  button {
+    font-size: 0.95rem;
+    padding: 0.65rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
 }
