@@ -75,7 +75,6 @@
   color: rgb(255, 198, 207);
 }
 
-/* ✅ Tablet */
 @media (max-width: 768px) {
   .menu {
     bottom: 15px;
@@ -96,7 +95,6 @@
   }
 }
 
-/* ✅ Mobile */
 @media (max-width: 480px) {
   .menu {
     width: 95%;

@@ -23,7 +23,7 @@ export function Menu() {
                 </li>
 
                 <li className="menu-item">
-                    <Link to="/inventario" className="menu-link" aria-label="Ir para Inventário">
+                    <Link to="#" className="menu-link" aria-label="Ir para Inventário">
                         <figure>
                             <img 
                                 src={ravena} 
@@ -36,7 +36,7 @@ export function Menu() {
                 </li>
 
                 <li className="menu-item">
-                    <Link to="/geolocalizacao" className="menu-link" aria-label="Ir para Geolocalização">
+                    <Link to="#" className="menu-link" aria-label="Ir para Geolocalização">
                         <figure>
                             <img 
                                 src={robin} 
@@ -49,7 +49,7 @@ export function Menu() {
                 </li>
 
                 <li className="menu-item">
-                    <Link to="/camera" className="menu-link" aria-label="Ir para Câmera">
+                    <Link to="#" className="menu-link" aria-label="Ir para Câmera">
                         <figure>
                             <img 
                                 src={estelar} 

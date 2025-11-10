@@ -1,6 +1,6 @@
 import { useState } from "react";
-import sucesso from "../assets/win.png";
-import erro from "../assets/raios.png";
+import sucesso from "../assets/sucesso_titas.webp";
+import erro from "../assets/erro_titas.png";
 
 export function MissaoModal({ missao, onClose, onConcluir }) {
   const [resposta, setResposta] = useState("");
@@ -105,7 +105,7 @@ export function MissaoModal({ missao, onClose, onConcluir }) {
             <img
               src={sucesso}
               alt="Missão concluída com sucesso"
-              width="100"
+              width="190"
             />
           )}
 
@@ -113,7 +113,7 @@ export function MissaoModal({ missao, onClose, onConcluir }) {
             <img
               src={erro}
               alt="Resposta incorreta"
-              width="100"
+              width="190"
             />
           )}
         </div>

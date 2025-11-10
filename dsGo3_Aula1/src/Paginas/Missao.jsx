@@ -15,42 +15,37 @@ export function Missao() {
   };
 
   return (
-    <main
-      className="conteiner"
-      role="main"
-      aria-labelledby="titulo-missoes"
-    >
-      <button
-        className="fechar-missoes"
-        onClick={() => navigate(-1)}
-        aria-label="Voltar para a página anterior"
-      >
-        ✕
-      </button>
+    <div className="modal-wrapper">
+      <main className="conteiner" role="main" aria-labelledby="titulo-missoes">
+        <button
+          className="fechar-missoes"
+          onClick={() => navigate(-1)}
+          aria-label="Voltar para a página anterior"
+        >
+          ✕
+        </button>
 
-      <h1 id="titulo-missoes">Suas Missões</h1>
+        <h1 id="titulo-missoes">Suas Missões</h1>
 
-      <section
-        className="missoes-grid"
-        aria-label="Lista de missões disponíveis"
-      >
-        {missoes.map((m) => (
-          <MissaoCard
-            key={m.id}
-            missao={m}
-            onIniciarMissao={() => setMissaoSelecionada(m)}
-            concluida={missoesConcluidas.includes(m.id)}
+        <section className="missoes-grid" aria-label="Lista de missões disponíveis">
+          {missoes.map((m) => (
+            <MissaoCard
+              key={m.id}
+              missao={m}
+              onIniciarMissao={() => setMissaoSelecionada(m)}
+              concluida={missoesConcluidas.includes(m.id)}
+            />
+          ))}
+        </section>
+
+        {missaoSelecionada && (
+          <MissaoModal
+            missao={missaoSelecionada}
+            onClose={() => setMissaoSelecionada(null)}
+            onConcluir={() => concluirMissao(missaoSelecionada.id)}
           />
-        ))}
-      </section>
-
-      {missaoSelecionada && (
-        <MissaoModal
-          missao={missaoSelecionada}
-          onClose={() => setMissaoSelecionada(null)}
-          onConcluir={() => concluirMissao(missaoSelecionada.id)}
-        />
-      )}
-    </main>
+        )}
+      </main>
+    </div>
   );
 }
