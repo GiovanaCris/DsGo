@@ -1,0 +1,48 @@
+.corpo {
+  background-image: url('../assets/img_fundo.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(235, 225, 225, 0.10);
+    backdrop-filter: blur(2.5px);
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* RESPONSIVIDADE BASE */
+@media (max-width: 1024px) {
+  .corpo {
+    background-size: cover;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .corpo {
+    padding: 1.2rem;
+    backdrop-filter: blur(2px);
+  }
+}
+
+@media (max-width: 480px) {
+  .corpo {
+    padding: 1rem;
+    background-position: center top;
+    backdrop-filter: blur(1.8px);
+  }
+}

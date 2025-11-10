@@ -1,0 +1,180 @@
+@use './variaveis' as *;
+
+body {
+  overflow: hidden; 
+}
+
+.modal-wrapper {
+  position: fixed;
+  inset: 0; 
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.conteiner {
+  position: relative;
+  background-image: url('../assets/img_backgoundModal.jpg');
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(8px);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  color: #b3f5ff;
+  max-width: 1200px;
+  width: 100%;
+  overflow-y: auto;
+  max-height: 85vh;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  scrollbar-width: thin;
+  scrollbar-color: $destaque-azul transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $destaque-azul;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  h1,
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+.missoes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+
+.missao-card {
+  background-color: $card;
+  color: #222;
+  border-radius: 16px;
+  padding: 1.5rem;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: 0.3s ease;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  p {
+    line-height: 1.5;
+  }
+
+  .conteudo {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #6a1b9a;
+  }
+}
+
+
+.fechar-missoes {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background-color: rgba(46, 46, 46, 0.6);
+  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  transition: 0.2s ease;
+  z-index: 1001;
+
+  &:hover {
+    color: #4db8ff;
+  }
+
+  &:focus {
+    outline: 3px solid #4db8ff;
+    outline-offset: 3px;
+  }
+}
+
+//Responsividade
+@media (max-width: 1024px) {
+  .conteiner {
+    padding: 2rem 1.5rem;
+  }
+
+  .missao-card {
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .conteiner {
+    padding: 1.5rem 1rem;
+
+    h1,
+    h2 {
+      font-size: 1.7rem;
+    }
+  }
+
+  .missao-card {
+    font-size: 16px;
+
+    h3 {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .conteiner {
+    padding: 1rem;
+    max-height: 75vh;
+  }
+
+  .missao-card {
+    padding: 1rem;
+    min-height: 180px;
+
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  .fechar-missoes {
+    font-size: 1.6rem;
+    top: 8px;
+    right: 15px;
+  }
+}
