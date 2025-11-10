@@ -1,4 +1,4 @@
-@use './variaveis' as *;
+@use './variaveis'as *;
 
 .inventario {
   padding: 2rem;
@@ -7,17 +7,45 @@
   min-height: 100vh;
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 
   h1,
   h2 {
     margin-bottom: 1.5rem;
     font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .limpar-inventario {
+    background: linear-gradient(135deg, #4b7bff, #d42b2b);
+    border: none;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 12px rgba(255, 50, 50, 0.3);
+
+    &:hover {
+      background: linear-gradient(135deg, #ff6b6b, #e23a3a);
+      transform: scale(1.05);
+      box-shadow: 0 0 18px rgba(255, 80, 80, 0.5);
+    }
   }
 
   .vazio {
     font-size: 1.2rem;
     color: #ccc;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    font-style: italic;
+    animation: aparecer 0.5s ease;
   }
 
   .grid {
@@ -25,7 +53,7 @@
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     justify-items: center;
-    margin-top: 15px;
+    margin-top: 20px;
     padding-bottom: 2rem;
     width: 100%;
   }
@@ -34,17 +62,19 @@
     background: $card;
     border-radius: 12px;
     padding: 1rem;
-    box-shadow: 0 0 8px rgba(0,0,0,0.4);
-    transition: transform 0.2s;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.25s, box-shadow 0.25s;
     width: 100%;
     max-width: 150px;
     color: $fundo;
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: surgir 0.4s ease;
 
     &:hover {
-      transform: scale(1.05);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
     }
 
     img {
@@ -53,6 +83,7 @@
       max-width: 100px;
       margin-bottom: 0.5rem;
       border-radius: 8px;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
     }
 
     p {
@@ -64,6 +95,88 @@
   }
 }
 
+.modal-confirmacao {
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  border-radius: 10px;
+  padding: 2rem;
+  color: #fff;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  animation: surgir 0.3s ease;
+
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #ccc;
+  }
+
+  .acoes {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    button {
+      border: none;
+      padding: 0.7rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:first-child {
+        background: linear-gradient(135deg, #ff4b4b, #d42b2b);
+        color: #fff;
+
+        &:hover {
+          background: linear-gradient(135deg, #ff6b6b, #e23a3a);
+          transform: scale(1.05);
+        }
+      }
+
+      &:last-child {
+        background: #333;
+        color: #fff;
+
+        &:hover {
+          background: #444;
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/*Responsividade*/
 @media (max-width: 768px) {
   .inventario {
     padding: 1.5rem;

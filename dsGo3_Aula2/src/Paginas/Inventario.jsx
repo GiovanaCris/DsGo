@@ -4,34 +4,38 @@ export function Inventario() {
   const [figurinhas, setFigurinhas] = useState([]);
   const [mostrarConfirmacao, setMostrarConfirmacao] = useState(false);
 
+  // Carrega o inventário salvo ao iniciar
   useEffect(() => {
-    const armazenado = JSON.parse(localStorage.getItem("inventario")) || [];
-    setFigurinhas(armazenado);
+    const armazenado = localStorage.getItem("inventario");
+    if (armazenado) {
+      setFigurinhas(JSON.parse(armazenado));
+    }
   }, []);
 
+  // Remove o inventário e atualiza o estado
   const confirmarLimpeza = () => {
     localStorage.removeItem("inventario");
-    setFigurinhas([]);
+    setFigurinhas([]); // limpa o estado, atualiza a tela
     setMostrarConfirmacao(false);
   };
 
   return (
-    <main
-      className="conteiner"
-      role="main"
-      aria-labelledby="titulo-inventario"
-    >
+    <main className="conteiner" role="main" aria-labelledby="titulo-inventario">
       <section className="inventario">
         <h1 id="titulo-inventario">Inventário</h1>
 
-        <button
-          className="limpar-inventario"
-          onClick={() => setMostrarConfirmacao(true)}
-          aria-label="Limpar inventário"
-        >
-          Limpar Inventário
-        </button>
+        {/* Botão para abrir modal */}
+        {figurinhas.length > 0 && (
+          <button
+            className="limpar-inventario"
+            onClick={() => setMostrarConfirmacao(true)}
+            aria-label="Limpar inventário"
+          >
+            Limpar Inventário
+          </button>
+        )}
 
+        {/* Mensagem se estiver vazio */}
         {figurinhas.length === 0 ? (
           <p className="vazio" aria-live="polite">
             Nenhuma figurinha coletada ainda.
@@ -40,17 +44,14 @@ export function Inventario() {
           <div className="grid">
             {figurinhas.map((f) => (
               <div key={f.id} className="figurinha">
-                <img
-                  src={f.imagem}
-                  alt={f.nome}
-                  className="img-figurinha"
-                />
+                <img src={f.imagem} alt={f.nome} className="img-figurinha" />
               </div>
             ))}
           </div>
         )}
       </section>
 
+      {/* Modal de confirmação */}
       {mostrarConfirmacao && (
         <dialog
           open

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import sucesso from "../assets/sucesso_titas.webp";
 import erro from "../assets/erro_titas.png";
 
@@ -8,6 +8,31 @@ export function MissaoModal({ missao, onClose, onConcluir }) {
   const [status, setStatus] = useState(null);
   const [erroInput, setErroInput] = useState(false);
 
+  //Evita rolagem do fundo quando o modal está aberto
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  //Adiciona a figurinha ao inventário
+  const adicionarAoInventario = (missao) => {
+    const inventarioAtual = JSON.parse(localStorage.getItem("inventario")) || [];
+    const jaTem = inventarioAtual.some((f) => f.id === missao.id);
+    if (jaTem) return;
+
+    const novaFigurinha = {
+      id: missao.id,
+      nome: missao.titulo,
+      imagem: missao.figura,
+    };
+
+    const novoInventario = [...inventarioAtual, novaFigurinha];
+    localStorage.setItem("inventario", JSON.stringify(novoInventario));
+  };
+
+  //Verifica se a resposta está correta
   const verificarResposta = () => {
     if (!resposta.trim()) {
       setErroInput(true);
@@ -18,9 +43,13 @@ export function MissaoModal({ missao, onClose, onConcluir }) {
     const certaNormalizada = missao.respostaCorreta.trim().toLowerCase();
 
     if (respostaNormalizada === certaNormalizada) {
-      setResultado("Resposta correta. Missão concluída.");
+      setResultado("Resposta correta! Missão concluída 🎉");
       setStatus("sucesso");
 
+      //Salva a figurinha
+      adicionarAoInventario(missao);
+
+      //Marca como concluída após 1 segundo
       setTimeout(() => {
         onConcluir(missao.id);
       }, 1000);
@@ -28,13 +57,6 @@ export function MissaoModal({ missao, onClose, onConcluir }) {
       setResultado("Resposta incorreta. Tente novamente.");
       setStatus("erro");
     }
-    useEffect(() => {
-      document.body.style.overflow = "hidden";
-      return () => {
-        document.body.style.overflow = "auto";
-      };
-    }, []);
-
   };
 
   return (
@@ -94,27 +116,15 @@ export function MissaoModal({ missao, onClose, onConcluir }) {
       </div>
 
       {resultado && (
-        <div
-          className="resultado"
-          role="status"
-          aria-live="polite"
-        >
+        <div className="resultado" role="status" aria-live="polite">
           <p>{resultado}</p>
 
           {status === "sucesso" && (
-            <img
-              src={sucesso}
-              alt="Missão concluída com sucesso"
-              width="190"
-            />
+            <img src={sucesso} alt="Missão concluída com sucesso" width="190" />
           )}
 
           {status === "erro" && (
-            <img
-              src={erro}
-              alt="Resposta incorreta"
-              width="190"
-            />
+            <img src={erro} alt="Resposta incorreta" width="190" />
           )}
         </div>
       )}
