@@ -23,7 +23,7 @@ export function Menu() {
                 </li>
 
                 <li className="menu-item">
-                    <Link to="#" className="menu-link" aria-label="Ir para Inventário">
+                    <Link to="inventario" className="menu-link" aria-label="Ir para Inventário">
                         <figure>
                             <img 
                                 src={ravena} 

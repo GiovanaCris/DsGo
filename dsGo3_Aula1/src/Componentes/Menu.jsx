@@ -8,7 +8,7 @@ export function Menu() {
     return (
         <nav className="menu" aria-label="Menu principal">
             <ul className="menu-list">
-                
+                {/*Link de navegação para as missões*/}
                 <li className="menu-item">
                     <Link to="missao" className="menu-link" aria-label="Ir para Missões">
                         <figure>
@@ -23,6 +23,7 @@ export function Menu() {
                 </li>
 
                 <li className="menu-item">
+                    {/*Link de navegação para o iventário*/}
                     <Link to="#" className="menu-link" aria-label="Ir para Inventário">
                         <figure>
                             <img 
@@ -36,6 +37,7 @@ export function Menu() {
                 </li>
 
                 <li className="menu-item">
+                    {/*Link de navegação para a Geolocalização*/}
                     <Link to="#" className="menu-link" aria-label="Ir para Geolocalização">
                         <figure>
                             <img 
@@ -49,6 +51,7 @@ export function Menu() {
                 </li>
 
                 <li className="menu-item">
+                    {/*Link de navegação para a câmera*/}
                     <Link to="#" className="menu-link" aria-label="Ir para Câmera">
                         <figure>
                             <img 

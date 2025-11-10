@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+//Página der inventário que será feita na versão 2
 export function Inventario() {
   const [figurinhas, setFigurinhas] = useState([]);
   const [mostrarConfirmacao, setMostrarConfirmacao] = useState(false);

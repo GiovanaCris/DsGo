@@ -1,4 +1,5 @@
 export function MissaoCard({ missao, onIniciarMissao, concluida }) {
+//Cards de missão com os dados vindos do JS
   return (
     <article
       className="missao-card"

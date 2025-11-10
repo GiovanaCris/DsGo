@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
+//Página inicial do sistema
 export function Inicial() {
   const navigate = useNavigate();
 

@@ -1,29 +1,17 @@
 export function MissaoCard({ missao, onIniciarMissao, concluida }) {
+  const inventario = JSON.parse(localStorage.getItem("inventario")) || [];
+  const concluidaLocal = inventario.some((f) => f.id === missao.id);
+  const isConcluida = concluida !== undefined ? concluida : concluidaLocal;
+ 
   return (
-    <article
-      className="missao-card"
-      aria-labelledby={`titulo-missao-${missao.id}`}
-      aria-describedby={`descricao-missao-${missao.id}`}
-      role="region"
-    >
-      <h3 id={`titulo-missao-${missao.id}`}>{missao.titulo}</h3>
-
-      <p id={`descricao-missao-${missao.id}`}>
-        {missao.missao}
-      </p>
-
+    <article className="missao-card">
+      <h3 id={missao.id}>{missao.titulo}</h3>
+      <p>{missao.missao}</p>
       <button
         onClick={() => onIniciarMissao(missao)}
-        disabled={concluida}
-        aria-disabled={concluida}
-        aria-label={
-          concluida
-            ? "Missão já concluída"
-            : `Iniciar missão ${missao.titulo}`
-        }
-        className="missao-btn"
+        disabled={isConcluida}
       >
-        {concluida ? "Missão concluída" : "Iniciar Missão"}
+        {isConcluida ? "Concluída" : "Iniciar missão"}
       </button>
     </article>
   );
