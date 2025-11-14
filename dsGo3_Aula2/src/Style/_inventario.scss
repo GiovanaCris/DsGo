@@ -1,202 +1,186 @@
-@use './variaveis'as *;
+@use "./variaveis" as *;
 
+.conteinerInventario,
 .inventario {
   padding: 2rem;
   text-align: center;
-  color: #fff;
-  min-height: 100vh;
-  width: 100%;
+  min-height: 80vh;
+  border-radius: 20px;
+  width: 80%;
+  background-size: cover;
+  background-position: center;
+  background-image: url('../assets/img_backgoundModal.jpg');
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 
-  h1,
-  h2 {
+  h1 {
     margin-bottom: 1.5rem;
     font-size: 2rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .limpar-inventario {
-    background: linear-gradient(135deg, #4b7bff, #d42b2b);
-    border: none;
-    color: #fff;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 12px rgba(255, 50, 50, 0.3);
-
-    &:hover {
-      background: linear-gradient(135deg, #ff6b6b, #e23a3a);
-      transform: scale(1.05);
-      box-shadow: 0 0 18px rgba(255, 80, 80, 0.5);
-    }
+    color: #b3f5ff;
   }
 
   .vazio {
     font-size: 1.2rem;
-    color: #ccc;
+    color: white;
     margin-top: 2rem;
-    font-style: italic;
-    animation: aparecer 0.5s ease;
+    opacity: 0.8;
+  }
+
+  .btn-acao {
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    background: $botao-azul;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background: lighten $destaque-azul;
+    }
+  }
+
+  .limpar-inventario {
+    margin-bottom: 1.5rem;
   }
 
   .grid {
     display: grid;
-    gap: 1rem;
+    gap: 1.2rem;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    justify-items: center;
-    margin-top: 20px;
-    padding-bottom: 2rem;
     width: 100%;
+    padding-bottom: 2rem;
   }
 
   .figurinha {
-    background: $card;
+    background: $claro;
+    border: 2px solid $destaque-azul;
     border-radius: 12px;
     padding: 1rem;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
-    transition: transform 0.25s, box-shadow 0.25s;
-    width: 100%;
-    max-width: 150px;
     color: $fundo;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: surgir 0.4s ease;
+    cursor: pointer;
+    box-shadow:
+      0 0 10px rgba(7, 49, 163, 0.5),
+      0 6px 12px rgba(186, 233, 255, 0.459);
+    transition: 0.25s;
+    text-align: center;
 
     &:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+      transform: translateY(-5px);
     }
 
     img {
       width: 100%;
-      height: auto;
-      max-width: 100px;
-      margin-bottom: 0.5rem;
+      max-width: 200px;
       border-radius: 8px;
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
+      margin-bottom: 0.5rem;
     }
 
     p {
-      margin: 0;
-      font-weight: bold;
-      font-size: 1rem;
-      text-align: center;
+      font-weight: 700;
+      font-size: 0.95rem;
     }
   }
 }
 
-.modal-confirmacao {
-  background: rgba(0, 0, 0, 0.7);
-  border: none;
-  border-radius: 10px;
+dialog.modal-confirmacao {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  max-width: 420px;
+  background: $claro;
+  border-radius: 16px;
   padding: 2rem;
-  color: #fff;
   text-align: center;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-  animation: surgir 0.3s ease;
+  border: 2px solid $destaque-azul;
+  box-shadow:
+    0 0 12px rgba(7, 49, 163, 0.7),
+    0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
 
   h2 {
-    margin-bottom: 1rem;
     font-size: 1.6rem;
+    color: $fundo;
+    margin-bottom: 1rem;
   }
 
   p {
     margin-bottom: 1.5rem;
-    font-size: 1rem;
-    color: #ccc;
+    color: $fundo;
+    opacity: 0.9;
   }
 
-  .acoes {
+  .modal-botoes {
     display: flex;
     justify-content: center;
     gap: 1rem;
+    flex-wrap: wrap;
 
     button {
-      border: none;
-      padding: 0.7rem 1.4rem;
+      padding: 0.6rem 1.5rem;
       border-radius: 8px;
+      border: none;
+      background: $destaque-azul;
+      color: white;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: 0.3s;
 
-      &:first-child {
-        background: linear-gradient(135deg, #ff4b4b, #d42b2b);
-        color: #fff;
-
-        &:hover {
-          background: linear-gradient(135deg, #ff6b6b, #e23a3a);
-          transform: scale(1.05);
-        }
+      &:hover {
+        background: lighten $destaque-azul;
       }
 
-      &:last-child {
-        background: #333;
-        color: #fff;
+      &.cancelar {
+        background: #444;
 
         &:hover {
-          background: #444;
-          transform: scale(1.05);
+          background: lighten #444;
         }
       }
     }
   }
-}
 
-@keyframes surgir {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
+  .fechar-modal {
+    position: absolute;
+    top: -7px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: 0.2s ease;
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes aparecer {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
+    &:hover {
+      color: #5b83b2;
+    }
   }
 }
 
-/*Responsividade*/
 @media (max-width: 768px) {
   .inventario {
     padding: 1.5rem;
 
-    h1,
-    h2 {
+    h1 {
       font-size: 1.7rem;
     }
+  }
 
-    .grid {
-      gap: 0.8rem;
-    }
+  dialog.modal-confirmacao {
+    width: 80%;
+    padding: 1.6rem;
 
-    .figurinha {
-      padding: 0.8rem;
-      max-width: 130px;
-
-      img {
-        max-width: 90px;
-      }
+    h2 {
+      font-size: 1.4rem;
     }
   }
 }
@@ -205,25 +189,20 @@
   .inventario {
     padding: 1rem;
 
-    h1,
-    h2 {
+    h1 {
       font-size: 1.4rem;
     }
+  }
 
-    .grid {
-      gap: 0.6rem;
-    }
+  dialog.modal-confirmacao {
+    width: 90%;
+    padding: 1.3rem;
 
-    .figurinha {
-      max-width: 100px;
-      padding: 0.7rem;
+    .modal-botoes {
+      flex-direction: column;
 
-      img {
-        max-width: 70px;
-      }
-
-      p {
-        font-size: 0.85rem;
+      button {
+        width: 100%;
       }
     }
   }
