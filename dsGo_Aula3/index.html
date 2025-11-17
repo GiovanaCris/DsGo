@@ -2,12 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image" href="/logo.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DSGo</title>
+
+    <!-- Ícone -->
+    <link rel="icon" href="/icon-192.png" />
+
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Cor da barra do navegador (Android) -->
+    <meta name="theme-color" content="#000000" />
   </head>
+
   <body>
     <div id="root"></div>
+
+    <!-- Seu app -->
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Registro do Service Worker -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then(() => console.log("Service Worker registrado!"))
+          .catch((err) => console.log("Erro ao registrar SW:", err));
+      }
+    </script>
   </body>
 </html>

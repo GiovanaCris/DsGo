@@ -1,0 +1,9 @@
+{
+  "name": "Desenvolvimento de Sistema GO",
+  "short_name": "DSGO",
+  "start_url": "/",
+  "display": "standalone",
+  "scope": "/",
+  "background_color": "#ffffff",
+  "theme_color": "#000000"
+}

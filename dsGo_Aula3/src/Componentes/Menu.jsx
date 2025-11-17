@@ -49,7 +49,7 @@ export function Menu() {
                 </li>
 
                 <li className="menu-item">
-                    <Link to="#" className="menu-link" aria-label="Ir para Câmera">
+                    <Link to="camera" className="menu-link" aria-label="Ir para Câmera">
                         <figure>
                             <img 
                                 src={estelar} 
