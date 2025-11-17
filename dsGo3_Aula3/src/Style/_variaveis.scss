@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&display=swap');
+
+/* -------- VARIÁVEIS -------- */
+
+$fundo: #04010f;
+$claro: #f0ebeb;
+$card: #dcedf2;
+$sombrasBox: 0 4px 10px rgba(0, 0, 0, 0.3);
+$destaque-azul: #0d327c;
+$gradiente-rosa: linear-gradient(135deg, #2f1048, #e4018d);
+$foco: #4c0f32;
+$botao-azul: linear-gradient(135deg, #2c76e5, #0d327c);
+$botao-amarelo: linear-gradient(135deg, #b9820b, #ede203);
+$box-fundo: rgba(0, 0, 0, 0.8);
+$borda: 1px solid $fundo;
+
+/* -------- BASE -------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $fundo;
+  min-height: 100vh;
+  width: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+/* -------- BOTÕES -------- */
+
+button {
+  margin-top: 1rem;
+  align-self: center;
+  background: $botao-azul;
+  color: $claro;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s ease;
+  font-size: 1rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover:not([disabled]) {
+    transform: scale(1.05);
+  }
+
+  &:focus {
+    outline: 3px solid lighten $destaque-azul;
+    outline-offset: 3px;
+  }
+}
+
+button[disabled],
+.btn-disabled {
+  cursor: not-allowed;
+  opacity: 0.75;
+  background-color: #f3f1f2;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  button {
+    font-size: 0.95rem;
+    padding: 0.65rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+}
