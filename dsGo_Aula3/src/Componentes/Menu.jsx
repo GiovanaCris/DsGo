@@ -36,7 +36,7 @@ export function Menu() {
                 </li>
 
                 <li className="menu-item">
-                    <Link to="#" className="menu-link" aria-label="Ir para Geolocalização">
+                    <Link to="geolocalizacao" className="menu-link" aria-label="Ir para Geolocalização">
                         <figure>
                             <img 
                                 src={robin} 
